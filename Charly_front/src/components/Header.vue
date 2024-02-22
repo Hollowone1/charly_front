@@ -1,3 +1,23 @@
+<script>
+export default {
+    data() {
+        return {
+            isConneced: false
+        }
+    },
+    methods: {
+        checkConnexion() {
+            if (localStorage.getItem('username') && localStorage.getItem('email')) {
+                this.isConneced = true;
+            }
+        }
+    },
+    mounted() {
+        this.checkConnexion();
+    }
+}
+</script>
+
 <template>
     <nav>
         <routerLink to="/" id="logo"><img src="@/assets/logo.png" alt="Logo boite a cuisine"></routerLink>
@@ -9,23 +29,33 @@
                 <routerLink to="/list">Liste des cours</routerLink>
             </li>
             <li>
-                <routerLink to="/profil"><img src="@/assets/user-line.svg" alt="image du profil" class="profil">
-                </routerLink>
+                <routerLink to="/connexion" v-if="!isConneced" class="connection">Se connecter</routerLink>
+                <routerLink to="/profil" v-if="isConneced">Profil</routerLink>
             </li>
         </ul>
     </nav>
 </template>
 
-<script>
-</script>
 
 <style scoped lang="scss">
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
-
 body {
   margin: 0;
   padding: 0;
 
+}
+
+.connection {
+  background-color: #37A962;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 20px;
+
+  &:hover {
+    background-color: #1F282F;
+    color: #37A962;
+
+  }
 }
 
 nav {
@@ -34,7 +64,6 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Comfortaa", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
@@ -56,7 +85,8 @@ nav {
         font-weight: bold;
 
         &:hover {
-          color: #A43481;
+          color: #37A962;
+
         }
       }
     }
