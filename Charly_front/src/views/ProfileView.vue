@@ -142,6 +142,7 @@ form button{
     color: #fff;
     font-family: 'Comfortaa',sans-serif;
     font-weight: 300;
+    margin-bottom: 30px;
 }
 .demands{
     background-color: #37A962;
@@ -257,5 +258,7 @@ form button{
 h2{
     text-align: center;
     padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 </style>
