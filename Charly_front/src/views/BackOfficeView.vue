@@ -3,15 +3,14 @@
     <div class="search-bar">
       <input type="text" v-model="search" placeholder="Rechercher...">
     </div>
-    <button @click="create">Créer un nouvel atelier</button>
+    <button @click="create" id="create">Créer un nouvel atelier</button>
     <div class="card-container">
       <div class="card" v-for="item in filteredItems" :key="item.id">
         <h2>{{ item.title }}</h2>
         <p>{{ item.description }}</p>
         <p>{{ item.date }}</p>
-        <button @click="editItem(item)">Modifier</button>
-        <button @click="deleteItem(item.id)">Supprimer</button>
-        <router-link :to="`/atelier/${item.id}`">Voir plus</router-link>
+        <button @click="editItem(item)" id="edit">Modifier</button>
+        <button @click="deleteItem(item.id)" id="delete">Supprimer</button>
       </div>
     </div>
     <div class="centrer">
@@ -90,6 +89,39 @@ export default {
   margin-bottom: 20px;
 }
 
+#create {
+  background-color: #37A962;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  width: 30%;
+  margin: 20px auto;
+
+}
+
+#edit {
+  background-color: #A43481;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  width: 30%;
+  margin-bottom: 10px;
+
+}
+
+#delete {
+  background-color: #cc0836;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  width: 50%;
+
+
+}
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
@@ -98,6 +130,7 @@ export default {
   .card {
     flex: 0 0 calc(33.3333% - 20px);
     margin-bottom: 20px;
+    padding: 20px;
 
     img {
       width: 100%;

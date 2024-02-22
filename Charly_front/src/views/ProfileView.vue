@@ -49,7 +49,7 @@
         </section>
         <section class="ateliers">
             <h2>Mes ateliers passés</h2>
-            <div class="cards" >
+            <div class="cards">
                 <div class="card rounded" v-for="(atelier, index) in ateliers" :key="index">
                     <div class="container-fluid">
                         <div class="row border-top-radius">
@@ -81,43 +81,25 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  data() {
-    return {
-      demands: [],
-      ateliers: [] 
-    };
-  },
-  created() {
-    loader.fetch_api('demandes')
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then(data => {
-        this.demands = data;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    loader.fetch_api('ateliers')
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then(data => {
-        this.ateliers = data;
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  }
+    data() {
+        return {
+            demands: [],
+            ateliers: []
+        };
+    },
+    created() {
+        axios.get('http://localhost/api/demands')
+            .then(response => {
+                this.demands = response.data.data;
+            });
+        axios.get('http://localhost/api/ateliers')
+            .then(response => {
+                this.ateliers = response.data.data;
+            });
+    }
 }
 </script>
 
@@ -328,7 +310,7 @@ h2 {
 .cards {
   display: flex;
   justify-content: space-around;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 
 }
 </style>
