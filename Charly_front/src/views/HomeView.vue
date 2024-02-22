@@ -1,6 +1,5 @@
 <template>
     <div>
-      <h1>MON HI MON DEPLOIEMENT</h1>
         <section>
             <div class="content">
                 <div class="description">
