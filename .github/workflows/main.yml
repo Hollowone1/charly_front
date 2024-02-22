@@ -23,7 +23,7 @@ jobs:
         with:
           name: build
           path: |
-            Charly_front/dist
+            Charly_front/dist/
           retention-days: 5
 
       - name: Deploy
