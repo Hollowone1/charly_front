@@ -25,3 +25,14 @@ jobs:
           path: |
             Charly_front/dist
           retention-days: 5
+
+      - name: Deploy
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASS }}
+          port: 22
+          source: "Charly_front/dist"
+          target: /mnt/user/frontcharly/
+        
