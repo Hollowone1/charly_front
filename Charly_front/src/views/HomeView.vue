@@ -30,7 +30,9 @@
         <section>
             <div class="content">
                 <div class="description">
-                    <p>"La boîte à cuisine" à Nancy, est un lieu initié par l'association Accueil et Réinsertion Sociale (ARS), depuis le 10 janvier, pour cuisinier contre la précarité. Les ateliers sont solidaires et gratuits sur inscription.</p>
+                    <p>"La boîte à cuisine" à Nancy, est un lieu initié par l'association Accueil et Réinsertion Sociale
+                        (ARS), depuis le 10 janvier, pour cuisinier contre la précarité. Les ateliers sont solidaires et
+                        gratuits sur inscription.</p>
                 </div>
                 <div class="image">
                     <img src="@/assets/home/CuisineEntreprise.webp  " alt="image de la cuisine de l'association">
@@ -80,9 +82,10 @@ div {
           transform: rotate(180deg);
           margin-top: 20px;
         }
-          &:last-child {
+
+        &:last-child {
           margin-bottom: 100px;
-          }
+        }
       }
 
       p {
@@ -127,6 +130,8 @@ div {
         img {
           width: 100%;
           height: auto;
+          border-radius: 5px;
+          box-shadow: 0 0 5px 1px #37A962;
         }
       }
     }
