@@ -16,37 +16,7 @@
         <section class="demands">
             <h2>Mes demandes</h2>
             <div class="cards">
-                <div class="card rounded">
-                    <div class="container-fluid">
-                        <div class="row border-top-radius">
-                            <div class="col-md-6">
-                                <img src="@/assets/ragout.jpg" alt="image de la recette" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 d-flex flex-column justify-content-center align-items-start">
-                                <h5 class="card-title">Soupe à l'oignon</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">recette orientale</h6>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img src="@/assets/cuisine.png" alt="image du cours" class="img-fluid w-100">
-                            </div>
-                        </div>
-                        <div class="row border-bottom-radius">
-                            <div class="col-md-12">
-                                <h3 class="card-title mt-3">Recettes de la soupe à l'oignon à l'orientale</h3>
-                                <div class="card-status">
-                                    <h5 class="status-btn">Status:
-                                        <div class="state-status">Acceptée</div>
-                                    </h5>
-                                </div>
-                                <p class="card-date">Date: 12/04/2024</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card rounded">
+                <div class="card rounded" v-for="(demand, index) in demands" :key="index">
                     <div class="container-fluid">
                         <div class="row border-top-radius">
                             <div class="col-md-6">
@@ -79,8 +49,8 @@
         </section>
         <section class="ateliers">
             <h2>Mes ateliers passés</h2>
-            <div class="cards">
-                <div class="card rounded">
+            <div class="cards" >
+                <div class="card rounded" v-for="(atelier, index) in ateliers" :key="index">
                     <div class="container-fluid">
                         <div class="row border-top-radius">
                             <div class="col-md-6">
@@ -104,82 +74,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="card rounded">
-                    <div class="container-fluid">
-                        <div class="row border-top-radius">
-                            <div class="col-md-6">
-                                <img src="@/assets/ragout.jpg" alt="image de la recette" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 d-flex flex-column justify-content-center align-items-start">
-                                <h5 class="card-title">Soupe à l'oignon</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">recette orientale</h6>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img src="@/assets/cuisine.png" alt="image du cours" class="img-fluid w-100">
-                            </div>
-                        </div>
-                        <div class="row border-bottom-radius">
-                            <div class="col-md-12">
-                                <h3 class="card-title mt-3">Recettes de la soupe à l'oignon à l'orientale</h3>
-                                <p class="card-date">Date: 12/04/2024</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card rounded">
-                    <div class="container-fluid">
-                        <div class="row border-top-radius">
-                            <div class="col-md-6">
-                                <img src="@/assets/ragout.jpg" alt="image de la recette" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 d-flex flex-column justify-content-center align-items-start">
-                                <h5 class="card-title">Soupe à l'oignon</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">recette orientale</h6>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img src="@/assets/cuisine.png" alt="image du cours" class="img-fluid w-100">
-                            </div>
-                        </div>
-                        <div class="row border-bottom-radius">
-                            <div class="col-md-12">
-                                <h3 class="card-title mt-3">Recettes de la soupe à l'oignon à l'orientale</h3>
-                                <p class="card-date">Date: 12/04/2024</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card rounded">
-                    <div class="container-fluid">
-                        <div class="row border-top-radius">
-                            <div class="col-md-6">
-                                <img src="@/assets/ragout.jpg" alt="image de la recette" class="img-fluid">
-                            </div>
-                            <div class="col-md-6 d-flex flex-column justify-content-center align-items-start">
-                                <h5 class="card-title">Soupe à l'oignon</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">recette orientale</h6>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <img src="@/assets/cuisine.png" alt="image du cours" class="img-fluid w-100">
-                            </div>
-                        </div>
-                        <div class="row border-bottom-radius">
-                            <div class="col-md-12">
-                                <h3 class="card-title mt-3">Recettes de la soupe à l'oignon à l'orientale</h3>
-                                <p class="card-date">Date: 12/04/2024</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </section>
     </main>
@@ -187,7 +81,46 @@
 </template>
 
 <script>
+import loader from '@/js/loader.js'
 
+export default {
+  data() {
+    return {
+      demands: [],
+      ateliers: [] 
+    };
+  },
+  created() {
+    loader.fetch_api('demandes')
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(response.statusText);
+        }
+      })
+      .then(data => {
+        this.demands = data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    loader.fetch_api('ateliers')
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(response.statusText);
+        }
+      })
+      .then(data => {
+        this.ateliers = data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+}
 </script>
 
 <style scoped lang="scss">
