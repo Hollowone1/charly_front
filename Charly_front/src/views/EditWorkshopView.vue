@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     updateItem() {
-      axios.put(`http://localhost/api/ateliers/${this.$route.params.id}`, this.editedItems)
+      axios.put(`https://backend.crazycharlyday.kiwigdc.frapi/ateliers/${this.$route.params.id}`, this.editedItems)
         .then(response => {
           console.log(response);
           this.$router.push('/back-office');

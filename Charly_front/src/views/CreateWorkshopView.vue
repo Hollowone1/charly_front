@@ -29,7 +29,7 @@ export default {
     },
     methods: {
         createWorkshop() {
-            axios.post('http://localhost/api/ateliers', this.newWorkshop)
+            axios.post('https://backend.crazycharlyday.kiwigdc.fr/api/ateliers', this.newWorkshop)
                 .then(response => {
                     console.log(response);
 

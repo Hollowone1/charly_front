@@ -34,7 +34,7 @@ export default {
             return this.items.filter(item => item.title.includes(keyword) || item.description.includes(keyword));
         },
         fetchAteliers() {
-            axios.get('http://localhost/api/ateliers')
+            axios.get('https://backend.crazycharlyday.kiwigdc.fr/api/ateliers')
                 .then(response => {
                     this.items = response.data.data;
                 })
