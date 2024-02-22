@@ -13,10 +13,7 @@ jobs:
         with:
           node-version: 18
       - name: Build repo
-
-
-      - run: cd Charly_front
-      - run: ls
+        run: cd Charly_front & ls
       - run: npm install
       - run: npm run build
       - name: Archive production artifacts
