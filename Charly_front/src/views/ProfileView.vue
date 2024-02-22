@@ -34,12 +34,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h3 class="card-title mt-3">Recettes de la soupe à l'oignon à l'orientale</h3>
-                            <h5 class="card-status">Status: <span class="status-btn">
-                            <button class="btn btn-success btn-sm">Accepted</button>
-                            <button class="btn btn-warning btn-sm">Pending</button>
-                            <button class="btn btn-danger btn-sm">Rejected</button>
-                            </span></h5>
-                            <p class="card-date">Date: 12/04/2022</p>
+                            <div class="card-status"> <h5 class="status-btn">Status:
+                            <div class="state-status">Acceptée</div>
+                            </h5></div>
+                            <p class="card-date">Date: 12/04/2024</p>
                         </div>
                     </div>
                 </div>
@@ -125,6 +123,9 @@ form button{
     background-color: #37A962;
     height: 800px;
 }
+.ateliers{
+    height:800px
+}
 .card {
   width: 100%;
   max-width: 300px;
@@ -143,7 +144,7 @@ form button{
       &:first-child {
         display: flex;
         align-items: bottom;
-        justify-content:baseline;
+        justify-content:center;
         img {
             width: 50%;
             height: auto;
@@ -158,18 +159,20 @@ form button{
           padding: 0;
           max-width: 130px;
           .card-title {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             color: #000;
             text-align: start;
             font-family: 'Comfortaa',sans-serif;
             font-weight: 500;
           }
           .card-subtitle {
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             color: #000;
             text-align: start;
             font-family: 'Comfortaa',sans-serif;
             font-weight: 300;
+            position: relative;
+            bottom: 25px;
           }
         }
       }
@@ -190,32 +193,25 @@ form button{
           color: #000;
           font-family: 'Comfortaa',sans-serif;
           font-weight: 600;
+          text-align: center;
         }
         .card-status {
           margin-bottom: 20px;
+          color: #000;
           .status-btn {
             display: flex;
-            button {
+            justify-content: center;
+            align-items: center;
+            .state-status {
               margin-left: 5px;
               padding: 5px 10px;
               border-radius: 5px;
-              &.btn-success {
                 background-color: #37A962;
-                color: white;
-              }
-              &.btn-warning {
-                background-color: yellow;
-                color: black;
-              }
-              &.btn-danger {
-                background-color: red;
-                color: white;
-              }
             }
           }
         }
         .card-date {
-          align-self: flex-start;
+          text-align: center;
           color: #000;
           font-family: 'Comfortaa',sans-serif;
           font-weight: 300;
