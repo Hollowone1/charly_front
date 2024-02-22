@@ -26,7 +26,7 @@ export default {
                 <routerLink to="/">Accueil</routerLink>
             </li>
             <li>
-                <routerLink to="/list">Liste des cours</routerLink>
+                <routerLink to="/list">Liste des ateliers</routerLink>
             </li>
             <li>
                 <routerLink to="/connexion" v-if="!isConneced" class="connection">Se connecter</routerLink>
