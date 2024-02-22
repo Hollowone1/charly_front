@@ -57,7 +57,7 @@
                                 <img src="@/assets/ragout.jpg" alt="image de la recette" class="img-fluid">
                             </div>
                             <div class="col-md-6 d-flex flex-column justify-content-center align-items-start">
-                                <h5 class="card-title">Soupe à l'oignon</h5>
+                                <h5 class="card-title">{{ atelier.title }}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">recette orientale</h6>
                             </div>
                         </div>
@@ -68,8 +68,8 @@
                         </div>
                         <div class="row border-bottom-radius">
                             <div class="col-md-12">
-                                <h3 class="card-title mt-3">Recettes de la soupe à l'oignon à l'orientale</h3>
-                                <p class="card-date">Date: 12/04/2024</p>
+                                <h3 class="card-title mt-3">{{ atelier.description }}</h3>
+                                <p class="card-date">{{ atelier.date }}</p>
                             </div>
                         </div>
                     </div>

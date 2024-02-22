@@ -9,7 +9,8 @@
         <h2>{{ item.title }}</h2>
         <p>{{ item.description }}</p>
         <p>{{ item.date }}</p>
-        <button @click="editItem(item)" id="edit">Modifier</button>
+        <p>{{ item.capacity }}</p>
+          <button @click="editItem(item)" id="edit">Modifier</button>
         <button @click="deleteItem(item.id)" id="delete">Supprimer</button>
       </div>
     </div>
@@ -21,29 +22,12 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
-      items: [
-        {
-          id: 1,
-          title: 'Titre 1',
-          description: 'Description 1',
-          date: '2022-01-01'
-        },
-        {
-          id: 2,
-          title: 'Titre 2',
-          description: 'Description 2',
-          date: '2022-02-02'
-        },
-        {
-          id: 3,
-          title: 'Titre 3',
-          description: 'Description 3',
-          date: '2022-03-03'
-        }
-      ],
+      items: [],
       search: '',
       error: ''
     }
@@ -56,24 +40,39 @@ export default {
       this.$router.push(`/back-office/edit-workshop/${item.id}`);
     },
     deleteItem(id) {
-      this.$api.delete(`/back-office/${id}`)
-          .then(() => {
-            this.items = this.items.filter(item => item.id !== id);
-          })
-          .catch(error => {
-            console.error(error);
-            this.error = 'Une erreur est survenue lors de la suppression de l\'atelier.';
-          });
+      axios.delete(`https://backend.crazycharlyday.kiwigdc.fr/api/ateliers/${id}`)
+        .then(response => {
+          console.log(response);
+          this.fetchAteliers();
+        })
+        .catch(error => {
+          console.error(error);
+        });
+
     },
     searchItem(keyword) {
       return this.items.filter(item => item.title.includes(keyword) || item.description.includes(keyword));
     },
+      fetchAteliers() {
+          axios.get('https://backend.crazycharlyday.kiwigdc.fr/api/ateliers')
+              .then(response => {
+                  this.items = response.data.data;
+              })
+              .catch(error => {
+                  this.error = 'Error fetching items: ' + error;
+              });
+
+      }
   },
   computed: {
     filteredItems() {
       return this.search ? this.searchItem(this.search) : this.items;
     }
-  }
+  },
+    created() {
+        this.fetchAteliers();
+
+    }
 }
 </script>
 
