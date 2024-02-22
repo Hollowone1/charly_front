@@ -15,9 +15,9 @@
         </div>
         <section class="demands">
             <h2>Mes demandes</h2>
-            <div class="card">
+            <div class="card rounded">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row border-top-radius">
                         <div class="col-md-6">
                             <img src="@/assets/ragout.jpg" alt="image de la recette" class="img-fluid">
                         </div>
@@ -31,7 +31,7 @@
                             <img src="@/assets/cuisine.png" alt="image du cours" class="img-fluid w-100">
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row border-bottom-radius">
                         <div class="col-md-12">
                             <h3 class="card-title mt-3">Recettes de la soupe à l'oignon à l'orientale</h3>
                             <div class="card-status"> <h5 class="status-btn">Status:
@@ -152,6 +152,8 @@ form button{
             border-radius: 100%;
         }
         .col-md-6 {
+          border-top-right-radius: 10px;
+          border-top-left-radius: 10px;
           display: flex;
           flex-direction: column;
           justify-content:center;
@@ -219,5 +221,13 @@ form button{
       }
     }
   }
+}
+.border-top-radius {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.border-bottom-radius {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 </style>
