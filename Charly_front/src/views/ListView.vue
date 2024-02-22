@@ -5,10 +5,10 @@
         </div>
         <div class="card-container">
             <div class="card" v-for="item in filteredItems" :key="item.id">
-                <img :src="item.image" alt="Image de l'item">
                 <h2>{{ item.title }}</h2>
                 <p>{{ item.description }}</p>
-                <p>{{ item.date }}</p>
+                <p>Date : {{ item.date }}</p>
+                <p>Nombre de places : {{ item.capacity }}</p>
                 <routerLink :to="`/atelier/${item.id}`">Voir plus</routerLink>
             </div>
 
@@ -19,39 +19,12 @@
 </template>
 
 <script>
+
+import axios from "axios";
 export default {
     data() {
         return {
-            items: [
-                {
-                    id: 1,
-                    title: 'Titre 1',
-                    description: 'Description 1',
-                    image: 'https://via.placeholder.com/150',
-                    date: '2022-01-01'
-                },
-                {
-                    id: 2,
-                    title: 'Titre 2',
-                    description: 'Description 2',
-                    image: 'https://via.placeholder.com/150',
-                    date: '2022-02-02'
-                },
-                {
-                    id: 3,
-                    title: 'Titre 3',
-                    description: 'Description 3',
-                    image: 'https://via.placeholder.com/150',
-                    date: '2022-03-03'
-                },
-                {
-                    id: 4,
-                    title: 'Titre 4',
-                    description: 'Description 4',
-                    image: 'https://via.placeholder.com/150',
-                    date: '2022-03-03'
-                }
-            ],
+            items: [],
             selectedItem: null,
             showModal: false,
             search: '',
@@ -62,11 +35,25 @@ export default {
         searchItem(keyword) {
             return this.items.filter(item => item.title.includes(keyword) || item.description.includes(keyword));
         },
+        fetchAteliers() {
+            axios.get('http://localhost/api/ateliers')
+                .then(response => {
+                    this.items = response.data.data;
+                    console.log(this.items);
+                })
+                .catch(error => {
+                    this.error = 'Error fetching items: ' + error;
+                });
+
+        }
     },
     computed: {
         filteredItems() {
             return this.search ? this.searchItem(this.search) : this.items;
         }
+    },
+    mounted() {
+        this.fetchAteliers();
     }
 }
 </script>
