@@ -26,8 +26,8 @@ const router = createRouter({
       component: ListView
     },
     {
-      path: '/item/:id',
-      name: 'item-details',
+      path: '/atelier/:id',
+      name: 'atelier-details',
       component: ItemDetailsView,
       props: true
     },

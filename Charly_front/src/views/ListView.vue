@@ -1,67 +1,66 @@
 <template>
-  <div class="container">
-    <div class="search-bar">
-      <input type="text" v-model="search" placeholder="Rechercher...">
-    </div>
-    <div class="card-container">
-      <div class="card" v-for="item in filteredItems" :key="item.id" @click="goToItemDetails(item)">
-        <img :src="item.image" alt="Image de l'item">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.description }}</p>
-        <p>{{ item.date }}</p>
-      </div>
-    </div>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" v-model="search" placeholder="Rechercher...">
+        </div>
+        <div class="card-container">
+            <div class="card" v-for="item in filteredItems" :key="item.id">
+                <img :src="item.image" alt="Image de l'item">
+                <h2>{{ item.title }}</h2>
+                <p>{{ item.description }}</p>
+                <p>{{ item.date }}</p>
+                <router-link :to="`/atelier/${item.id}`">Voir plus</router-link>
+            </div>
 
-    <p v-if="error">{{ error }}</p>
-  </div>
+        </div>
+
+        <p v-if="error">{{ error }}</p>
+    </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      items: [
-        {
-          id: 1,
-          title: 'Titre 1',
-          description: 'Description 1',
-          image: 'https://via.placeholder.com/150',
-          date: '2022-01-01'
-        },
-        {
-          id: 2,
-          title: 'Titre 2',
-          description: 'Description 2',
-          image: 'https://via.placeholder.com/150',
-          date: '2022-02-02'
-        },
-        {
-          id: 3,
-          title: 'Titre 3',
-          description: 'Description 3',
-          image: 'https://via.placeholder.com/150',
-          date: '2022-03-03'
+    data() {
+        return {
+            items: [
+                {
+                    id: 1,
+                    title: 'Titre 1',
+                    description: 'Description 1',
+                    image: 'https://via.placeholder.com/150',
+                    date: '2022-01-01'
+                },
+                {
+                    id: 2,
+                    title: 'Titre 2',
+                    description: 'Description 2',
+                    image: 'https://via.placeholder.com/150',
+                    date: '2022-02-02'
+                },
+                {
+                    id: 3,
+                    title: 'Titre 3',
+                    description: 'Description 3',
+                    image: 'https://via.placeholder.com/150',
+                    date: '2022-03-03'
+                }
+            ],
+            selectedItem: null,
+            showModal: false,
+            search: '',
+            error: ''
         }
-      ],
-      selectedItem: null,
-      showModal: false,
-      search: '',
-      error: ''
-    }
-  },
-  methods: {
-    searchItem(keyword) {
-      return this.items.filter(item => item.title.includes(keyword) || item.description.includes(keyword));
     },
-    goToItemDetails(item) {
-      this.$router.push({ name: 'item-details', params: { id: item.id } });
+    methods: {
+        searchItem(keyword) {
+            return this.items.filter(item => item.title.includes(keyword) || item.description.includes(keyword));
+        },
+    },
+    computed: {
+        filteredItems() {
+            return this.search ? this.searchItem(this.search) : this.items;
+        }
     }
-  },
-  computed: {
-    filteredItems() {
-      return this.search ? this.searchItem(this.search) : this.items;
-    }
-  }
 }
 </script>
 
