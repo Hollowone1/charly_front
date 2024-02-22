@@ -3,7 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import ListView from '@/views/ListView.vue'
 import ConnectionView from '@/views/ConnectionView.vue'
-import ItemDetailsView from "@/views/ItemDetailsView.vue";
+import ItemDetailsView from '@/views/ItemDetailsView.vue'
+import BackOfficeView from '@/views/BackOfficeView.vue'
 
 
 const router = createRouter({
@@ -35,6 +36,11 @@ const router = createRouter({
       name: 'connection',
       component: ConnectionView
     },
+    {
+      path: '/back-office',
+      name: 'back-office',
+      component: BackOfficeView
+    }
   ]
 })
 
