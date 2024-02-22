@@ -91,14 +91,19 @@ export default {
         };
     },
     created() {
-        axios.get('http://localhost/api/demands')
+        axios.get('http://localhost/api/profile', {
+            headers: {
+                Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMGJhY2U2ZmQ3YzQ4MzE2YTQ3ZGU1OTliNjJmOTgwNjJmYWM4ZGNlNjBlZjk4YWZlNWQ3OGY1Yjg1OGNkZGYzNGRkNDVlZmEzMGEwMWMwMTEiLCJpYXQiOjE3MDg2MzU1MzUuNjQ4NjA1LCJuYmYiOjE3MDg2MzU1MzUuNjQ4NjA4LCJleHAiOjE3NDAyNTc5MzUuNDM2NDE3LCJzdWIiOiIyMiIsInNjb3BlcyI6W119.sl9Y2-GeyC9TWbHxU-frNloOVvRiUiR5nwZqDiicTj_RKL-oDMiEJaIeRP9yxJti-_Y2MmH-hDz9YEoY_MyUwBP62p2sr78GZk6rsCpvjmS34vsMfefk-f3Txr2D0QRd0vARWD5rN-AEPePbT7sOCWksfRXmZPIfY1iQgTzu-Y6zVp_r45ltP1Ay00TIBwDKiT0gIw4mTGtDJ4F__nVQCySiHiPe2mfiwxTF3ChGczygpAI_5hEA3VwZhlBkMWu7QKZ4B8FNvkPQhGfERn8TD2dnyDr0Ze6EIq69pC71Tg2b5MZEzSUS4dqfm3AkurGUN9Lcragl-ENinumalth5WPInTi_UFdlncVEm-rPT94uaBBfWR0I3OUBrZB9jly84n-zvBOHtah8twxB6PQeQen7aKMrT6Vrble8mrfMMGumRvasoGLkJ39v8xKmp7frMXmTjA6iaPmCIFJ2x3q2OubXD1GXFikIA995UMJLtL5-tE9nQhnBNZsflPDSyui1i16KXPTHTVxyPPlRHr6X4W7uVL5q-t-BNkD3uUWAfH-Oj9jP1Ti_rVKLSs3FjbLYGCQEFzAR2ubXPGOz6HEKlhXVt-GahwbpvStQl2lMtDIrF_h-O1Tbuk0K5mlAbObEN7zmyeVhAbAaE_vN3q2_0cLJ4fd2yuKZcHzal40JIf_0`
+            }
+        })
             .then(response => {
-                this.demands = response.data.data;
+                this.demands = response.data.demands;
+                this.ateliers = response.data.ateliers;
+            })
+            .catch(error => {
+                console.error(error);
             });
-        axios.get('http://localhost/api/ateliers')
-            .then(response => {
-                this.ateliers = response.data.data;
-            });
+
     }
 }
 </script>
