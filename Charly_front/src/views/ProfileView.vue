@@ -45,6 +45,30 @@
         </section>
         <section class="ateliers">
             <h2>Mes ateliers passés</h2>
+            <div class="card rounded">
+                <div class="container-fluid">
+                    <div class="row border-top-radius">
+                        <div class="col-md-6">
+                            <img src="@/assets/ragout.jpg" alt="image de la recette" class="img-fluid">
+                        </div>
+                        <div class="col-md-6 d-flex flex-column justify-content-center align-items-start">
+                            <h5 class="card-title">Soupe à l'oignon</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">recette orientale</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img src="@/assets/cuisine.png" alt="image du cours" class="img-fluid w-100">
+                        </div>
+                    </div>
+                    <div class="row border-bottom-radius">
+                        <div class="col-md-12">
+                            <h3 class="card-title mt-3">Recettes de la soupe à l'oignon à l'orientale</h3>
+                            <p class="card-date">Date: 12/04/2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -173,8 +197,7 @@ form button{
             text-align: start;
             font-family: 'Comfortaa',sans-serif;
             font-weight: 300;
-            position: relative;
-            bottom: 25px;
+            
           }
         }
       }
@@ -229,5 +252,10 @@ form button{
 .border-bottom-radius {
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+}
+
+h2{
+    text-align: center;
+    padding: 10px;
 }
 </style>
