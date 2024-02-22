@@ -1,16 +1,18 @@
 <template>
     <main>
-        <h1>Mon profil</h1>
-        <form>
-            <img src="@/assets/profil.jpg" alt="photo de profil">
-            <label for="name">Votre nom</label>
-            <input type="text">
-            <label for="surname">Votre prénom</label>
-            <input type="text">
-            <label for="email">Votre email</label>
-            <input type="text">
-            <button type="submit">Modifier</button>
-        </form>
+        <div class="profil">
+            <h1>Mon profil</h1>
+            <form>
+                <img src="@/assets/profil.jpg" alt="photo de profil">
+                <label for="name">Votre nom</label>
+                <input type="text">
+                <label for="surname">Votre prénom</label>
+                <input type="text">
+                <label for="email">Votre email</label>
+                <input type="text">
+                <button type="submit">Modifier</button>
+            </form>
+        </div>
         <section class="demands">
             <div class="card">
                 <div class="container-fluid">
@@ -54,6 +56,70 @@
 </script>
 
 <style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+
+
+
+.profil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.profil h1 {
+    margin-bottom: 20px;
+    font-family: 'Comfortaa',sans-serif;
+    font-weight: 400;
+}
+
+.profil form {
+    display: grid;
+    gap: 20px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.profil form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.profil form input {
+    width: 100%;
+}
+.profil form img {
+    align-self: center;
+    justify-self: center;
+}
+
+form img{
+    height: 200px;
+    width: 200px;
+}
+
+label{
+    text-align: center;
+    font-family: 'Comfortaa',sans-serif;
+    font-weight: 300;
+}
+
+input{
+    max-width: 400px;
+    height: 45px;
+    border-radius: 5%;
+}
+form button{
+    max-width: 200px;
+    align-self: center;
+    justify-self: center;
+    background-color: #A43481;
+    border-radius: 10%;
+    height: 50px;
+    color: #fff;
+    font-family: 'Comfortaa',sans-serif;
+    font-weight: 300;
+}
 .card {
     border: 1px solid #ccc;
     border-radius: 5px;
