@@ -1,7 +1,7 @@
 <template>
     <main>
         <div class="profil">
-            <h1>Mon profil</h1>
+            <h2>Mon profil</h2>
             <form>
                 <img src="@/assets/profil.jpg" alt="photo de profil">
                 <label for="name">Votre nom</label>
@@ -14,6 +14,7 @@
             </form>
         </div>
         <section class="demands">
+            <h2>Mes demandes</h2>
             <div class="card">
                 <div class="container-fluid">
                     <div class="row">
@@ -21,8 +22,8 @@
                             <img src="@/assets/ragout.jpg" alt="image de la recette" class="img-fluid">
                         </div>
                         <div class="col-md-6 d-flex flex-column justify-content-center align-items-start">
-                            <h5 class="card-title">Title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Subtitle</h6>
+                            <h5 class="card-title">Soupe à l'oignon</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">recette orientale</h6>
                         </div>
                     </div>
                     <div class="row">
@@ -32,7 +33,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="card-title mt-3">Main Title</h3>
+                            <h3 class="card-title mt-3">Recettes de la soupe à l'oignon à l'orientale</h3>
                             <h5 class="card-status">Status: <span class="status-btn">
                             <button class="btn btn-success btn-sm">Accepted</button>
                             <button class="btn btn-warning btn-sm">Pending</button>
@@ -45,7 +46,7 @@
             </div>
         </section>
         <section class="ateliers">
-            
+            <h2>Mes ateliers passés</h2>
         </section>
     </main>
 
@@ -120,40 +121,107 @@ form button{
     font-family: 'Comfortaa',sans-serif;
     font-weight: 300;
 }
+.demands{
+    background-color: #37A962;
+    height: 800px;
+}
 .card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 20px;
-}
-
-.card-title {
-    margin-bottom: 10px;
-}
-
-.card-subtitle {
-    margin-bottom: 20px;
-}
-
-.card-status {
-    margin-bottom: 10px;
-}
-
-.card-date {
-    margin-top: 10px;
-}
-
-.status-btn {
-    display: inline-flex;
-    gap: 5px;
-}
-
-.img-fluid {
-    max-width: 100%;
-    height: auto;
-}
-
-.w-100 {
-    width: 100%;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  max-height: 300px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  .container-fluid {
+    padding: 0;
+    .row {
+      margin: 0;
+      background-color: white;
+      &:first-child {
+        display: flex;
+        align-items: bottom;
+        justify-content:baseline;
+        img {
+            width: 50%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 100%;
+        }
+        .col-md-6 {
+          display: flex;
+          flex-direction: column;
+          justify-content:center;
+          align-items:flex-start;
+          padding: 0;
+          max-width: 130px;
+          .card-title {
+            margin-bottom: 10px;
+            color: #000;
+            text-align: start;
+            font-family: 'Comfortaa',sans-serif;
+            font-weight: 500;
+          }
+          .card-subtitle {
+            margin-bottom: 20px;
+            color: #000;
+            text-align: start;
+            font-family: 'Comfortaa',sans-serif;
+            font-weight: 300;
+          }
+        }
+      }
+      &:nth-child(2) {
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      &:last-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+        .card-title {
+          margin-bottom: 10px;
+          color: #000;
+          font-family: 'Comfortaa',sans-serif;
+          font-weight: 600;
+        }
+        .card-status {
+          margin-bottom: 20px;
+          .status-btn {
+            display: flex;
+            button {
+              margin-left: 5px;
+              padding: 5px 10px;
+              border-radius: 5px;
+              &.btn-success {
+                background-color: #37A962;
+                color: white;
+              }
+              &.btn-warning {
+                background-color: yellow;
+                color: black;
+              }
+              &.btn-danger {
+                background-color: red;
+                color: white;
+              }
+            }
+          }
+        }
+        .card-date {
+          align-self: flex-start;
+          color: #000;
+          font-family: 'Comfortaa',sans-serif;
+          font-weight: 300;
+        }
+      }
+    }
+  }
 }
 </style>
