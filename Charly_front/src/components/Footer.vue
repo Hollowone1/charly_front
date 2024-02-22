@@ -10,14 +10,14 @@
 <style lang="scss" scoped>
 footer {
     background-color: #37A962;
-    color: white;
+    color: #1F282F;
     padding: 10px;
     text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
     font-size: 0.8em;
-    font-style: italic;
+    font-weight: bold;
     z-index: 100;
 }
 </style>
