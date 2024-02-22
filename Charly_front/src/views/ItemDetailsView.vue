@@ -1,16 +1,15 @@
 <template>
     <div class="container">
         <div class="card">
-            <img :src="item.image" alt="Image de l'item">
             <h2>{{ item.title }}</h2>
             <p>{{ item.description }}</p>
             <p>{{ item.date }}</p>
-            <p>{{ item.availablePlaces }}</p>
+            <p>{{ item.capacity }}</p>
             <button>Participer</button>
         </div>
 
         <div class="card">
-            <h2>Liste des participants - {{users.length}} / {{ item.availablePlaces}}</h2>
+            <h2>Liste des participants - {{users.length}} / {{ item.capacity}}</h2>
             <ul>
                 <li v-for="user in users" :key="user.id">{{ user.name }}</li>
             </ul>
@@ -24,36 +23,8 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            item:
-                {
-                    id: 1,
-                    title: 'Titre 1',
-                    description: 'Description 1',
-                    image: 'https://via.placeholder.com/150',
-                    date: '2022-01-01',
-                    availablePlaces: 10
-                },
+            item: {},
             users: [
-                {
-                    id: 1,
-                    name: 'User 1'
-                },
-                {
-                    id: 2,
-                    name: 'User 2'
-                },
-                {
-                    id: 3,
-                    name: 'User 3'
-                },
-                {
-                    id: 4,
-                    name: 'User 4'
-                },
-                {
-                    id: 5,
-                    name: 'User 5'
-                }
             ]
         }
     },
@@ -63,9 +34,10 @@ export default {
     },
     methods: {
         fetchItem(id) {
-            axios.get(`https://your-api-url.com/items/${id}`)
+            axios.get(`http://localhost/api/ateliers/${id}`)
                 .then(response => {
-                    this.item = response.data;
+                    this.item = response.data.data;
+                    this.users = response.data.data.users;
                 })
                 .catch(error => {
                     console.error('Error fetching item:', error);
