@@ -14,6 +14,9 @@
         <router-link :to="`/atelier/${item.id}`">Voir plus</router-link>
       </div>
     </div>
+    <div class="centrer">
+      <button type="submit" class="algorithme">Lancer l'algorithme</button>
+    </div>
     <p v-if="error">{{ error }}</p>
   </div>
 </template>
@@ -80,6 +83,7 @@ export default {
 
 .container {
   font-family: 'Comfortaa', cursive;
+  padding: 20px;
 }
 
 .search-bar {
@@ -105,5 +109,15 @@ export default {
       padding: 10px 0;
     }
   }
+}
+
+.centrer{
+  display: flex;
+  justify-content: center;
+}
+
+.algorithme{
+  background-color: #A43481;
+  border-radius: 5px;
 }
 </style>

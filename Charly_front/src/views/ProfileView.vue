@@ -81,8 +81,6 @@
 </template>
 
 <script>
-import loader from '@/js/loader.js'
-
 export default {
   data() {
     return {
