@@ -1,0 +1,38 @@
+name: Deploy Front
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./Charly_front
+      - name: Build repo
+        run: npm run build
+        working-directory: ./Charly_front
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: |
+            Charly_front/dist/
+          retention-days: 5
+
+      - name: Deploy
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASS }}
+          port: 22
+          source: "Charly_front/dist"
+          target: /mnt/user/frontcharly/
+        
