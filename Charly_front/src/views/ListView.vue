@@ -19,8 +19,8 @@
 </template>
 
 <script>
-
 import axios from "axios";
+
 export default {
     data() {
         return {
@@ -37,7 +37,6 @@ export default {
             axios.get('http://localhost/api/ateliers')
                 .then(response => {
                     this.items = response.data.data;
-                    console.log(this.items);
                 })
                 .catch(error => {
                     this.error = 'Error fetching items: ' + error;

@@ -34,6 +34,7 @@ export default {
       axios.post('http://localhost/api/ateliers', this.newWorkshop)
         .then(response => {
           console.log(response);
+
           this.$router.push('/back-office');
         })
         .catch(error => {
