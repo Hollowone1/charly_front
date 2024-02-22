@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { useAuthStore } from '../stores/authStore';
+import { useSigninStore } from '../stores/user.js';
 
 export default {
     install: (app, { baseURL }) => {
-        const authStore = useAuthStore();
+        const authStore = useSigninStore();
         const api = axios.create({baseURL});
 
         api.interceptors.request.use((config) => {
