@@ -9,7 +9,7 @@
                 <h2>{{ item.title }}</h2>
                 <p>{{ item.description }}</p>
                 <p>{{ item.date }}</p>
-                <router-link :to="`/atelier/${item.id}`">Voir plus</router-link>
+                <routerLink :to="`/atelier/${item.id}`">Voir plus</routerLink>
             </div>
 
         </div>
@@ -43,6 +43,13 @@ export default {
                     description: 'Description 3',
                     image: 'https://via.placeholder.com/150',
                     date: '2022-03-03'
+                },
+                {
+                    id: 4,
+                    title: 'Titre 4',
+                    description: 'Description 4',
+                    image: 'https://via.placeholder.com/150',
+                    date: '2022-03-03'
                 }
             ],
             selectedItem: null,
@@ -72,7 +79,14 @@ export default {
 }
 
 .search-bar {
-  margin-bottom: 20px;
+  margin: 20px 0;
+
+  input {
+    width: 30%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #A43481;
+  }
 }
 
 .card-container {
@@ -86,12 +100,26 @@ export default {
 
     img {
       width: 100%;
-      height: auto;
+      height: 150px;
+      object-fit: cover;
     }
 
-    h2, p {
+    h2, p, a {
       margin: 0;
-      padding: 10px 0;
+      padding: 10px;
+    }
+
+    a {
+      background-color: #A43481;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-align: center;
+      display: block;
+      margin: 10px auto;
+      width: 50%;
     }
   }
 }
