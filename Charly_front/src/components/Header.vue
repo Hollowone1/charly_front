@@ -1,10 +1,10 @@
 <template>
     <nav>
-		<routerLink to="/" id="logo"><img src="logo.png" alt="Logo"></routerLink>
+		<routerLink to="/" id="logo"><img src="@/assets/logo.png" alt="Logo boite a cuisine"></routerLink>
 		<ul>
 			<li><routerLink to="/">Home</routerLink></li>
 			<li><routerLink to="/list">Workshop</routerLink></li>
-			<li><routerLink v-if="isConnected" to="/profil">Login</routerLink></li>
+			<li><routerLink v-if="isConnected" to="/profil"><img src="@/assets/user-line.svg" alt="image du profil"></routerLink></li>
 		</ul>
 	</nav>
 </template>
